@@ -1,8 +1,6 @@
-package com.stackroute.userservice.config;
+package com.stackroute.playerservice.config;
 
-import com.stackroute.userservice.domain.Player;
-import com.stackroute.userservice.exceptions.PlayerAlreadyExitsException;
-import com.stackroute.userservice.services.PlayerService;
+import com.stackroute.playerservice.services.PlayerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
@@ -16,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class StartupApplicationListener implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceImpl playerServiceImpl;
 
     @Autowired
     Environment env;
@@ -29,10 +27,16 @@ public class StartupApplicationListener implements ApplicationListener<ContextRe
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        try {
-            playerService.saveUser(new Player(id,env.getProperty("name"),score));
-        } catch (PlayerAlreadyExitsException e) {
-            e.printStackTrace();
-        }
+        System.out.println("\n*****INSIDE ApplicationListener*****\n");
+
+        /* Seed data Code has been commented out to avoid PlayerAlreadyExistsException as same data is being
+         * seeded into mongodb database every time on start up.
+         */
+
+//        try {
+//            playerServiceImpl.savePlayer(new Player(id,env.getProperty("name"),score));
+//        } catch (PlayerAlreadyExitsException e) {
+//            e.printStackTrace();
+//        }
     }
 }

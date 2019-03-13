@@ -1,4 +1,4 @@
-package com.stackroute.userservice.config;
+package com.stackroute.playerservice.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ public class SwaggerConfig {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.stackroute.userservice"))
+                .apis(RequestHandlerSelectors.basePackage("com.stackroute.playerservice"))
                 .paths(regex("/api/v1.*"))
                 .build();
     }

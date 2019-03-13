@@ -1,4 +1,4 @@
-package com.stackroute.userservice.exceptions;
+package com.stackroute.playerservice.exceptions;
 
 public class PlayerAlreadyExitsException extends Exception {
 
