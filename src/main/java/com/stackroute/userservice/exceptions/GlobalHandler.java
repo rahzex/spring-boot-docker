@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 public class GlobalHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> defaultHandler(Exception e){
-        return new ResponseEntity<>("This is an exception handled by GlobalHandler: "+e.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Exception handled by GlobalHandler : \n"+e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }
