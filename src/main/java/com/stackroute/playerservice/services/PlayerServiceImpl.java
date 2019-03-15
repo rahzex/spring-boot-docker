@@ -39,6 +39,10 @@ public class PlayerServiceImpl implements PlayerService {
             throw new PlayerAlreadyExitsException("Player Already Exists! " + HttpStatus.CONFLICT);
 
         Player savedPlayer = playerRepository.save(player);
+
+        if(savedPlayer == null)
+            throw new PlayerAlreadyExitsException("Returned NULL!");
+
         return savedPlayer;
     }
 
